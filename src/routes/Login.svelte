@@ -36,7 +36,7 @@
 
 <div class="md:w-8/12">
 	{#if state === State.EmailSent}
-		<h1 class="text-2xl font-bold text-gray-900">Check your mailbox</h1>
+		<h1 class="text-2xl font-bold text-gray-900 dark:text-white">Check your mailbox</h1>
 		<div>
 			<p>We have sent you an e-mail with the confirmation link.</p>
 			<p>
