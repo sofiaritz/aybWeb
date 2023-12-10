@@ -10,7 +10,7 @@
 		if (type === DBType.SQLite) {
 			return "SQLite"
 		} else if (type === DBType.DuckDB) {
-			return "Postgres"
+			return "DuckDB"
 		} else {
 			return "Unknown database type"
 		}
