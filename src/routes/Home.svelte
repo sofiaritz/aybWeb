@@ -3,6 +3,7 @@
 	import DatabaseCard from "../lib/components/database/DatabaseCard.svelte"
 	import { Link } from "svelte-routing"
 	import Avatar from "../lib/components/Avatar.svelte"
+	import Button from "../lib/components/common/Button.svelte"
 </script>
 
 <div class="flex flex-col gap-6 md:w-8/12">
@@ -23,7 +24,17 @@
 	</div>
 
 	<div class="flex flex-col gap-3">
-		<h1 class="text-2xl">Databases</h1>
+		<div class="flex w-full justify-between">
+			<h1 class="text-2xl">Databases</h1>
+			{#if $userInfo.databases.length > 0}
+				<Link
+					to="/database/new"
+					class="rounded-lg bg-blue-700 px-3 py-1 text-center font-medium text-white no-underline hover:bg-blue-800 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300"
+				>
+					+ Create database
+				</Link>
+			{/if}
+		</div>
 		{#if $userInfo.databases.length > 0}
 			<div class="grid grid-cols-2 gap-6">
 				{#each $userInfo.databases as database (database.slug)}
