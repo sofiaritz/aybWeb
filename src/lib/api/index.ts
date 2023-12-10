@@ -83,6 +83,7 @@ export async function confirm(token: string, auth: UserInstanceData) {
 	})
 }
 
+// TODO(sofiaritz): Check method
 export async function createDatabase(slug: string, databaseType: DBType, auth: UserInstanceData) {
 	return request<DatabaseCreation>(`/v1/${slug}/create`, auth, {
 		headers: {

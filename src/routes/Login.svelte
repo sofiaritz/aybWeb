@@ -49,7 +49,7 @@
 		<h1 class="text-2xl text-red">Error</h1>
 		<span>{error.toString()}</span>
 	{:else if state === State.Waiting}
-		<h1 class="mb-6 text-2xl font-bold text-gray-900">Login</h1>
+		<h1 class="mb-6 text-2xl font-bold text-gray-900 dark:text-white">Login</h1>
 		<form class="flex flex-col gap-3.5" use:form>
 			<label class="block" for="instance-input">
 				Instance
@@ -59,7 +59,7 @@
 					id="instance-input"
 					placeholder="https://ayb.sofiaritz.com"
 				/>
-				<span class="text-sm text-gray-700"
+				<span class="text-sm text-gray-700 dark:text-gray-400"
 					>You can find an updated instance list at <a
 						href="https://git.sofiaritz.com/sofia/wip">ayb.host/instances</a
 					></span
