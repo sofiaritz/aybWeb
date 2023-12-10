@@ -8,7 +8,10 @@ The objective of this project is to create a simple-to-use web interface for ayb
 
 ## instances
 
-- [aybWeb.sofiaritz.com](https://aybweb.sofiaritz.com)
+* [aybWeb.sofiaritz.com](https://aybweb.sofiaritz.com)
+  * Updated manually every day
+* _Your instance_
+  * Do you host an aybWeb instance? Create a new issue or PR and I'll add it 
 
 ## mirror
 
