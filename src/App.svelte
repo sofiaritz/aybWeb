@@ -11,14 +11,14 @@
 	import UserPage from "./routes/UserPage.svelte"
 	import NewDatabase from "./routes/NewDatabase.svelte"
 	import { AYB_WEB_VERSION } from "./lib/consts"
-	import Support from "./routes/docs/Support.svelte";
+	import Support from "./routes/docs/Support.svelte"
 </script>
 
 <Router>
 	<Header />
 	<div class="mt-8 flex min-h-[90vh] flex-col items-center justify-between">
 		<main class="flex w-[95vw] flex-col items-center md:w-[60vw]">
-			<Route path="/docs/support"><Support/></Route>
+			<Route path="/docs/support"><Support /></Route>
 			{#if $loggedIn}
 				<Route path="/"><Home /></Route>
 				<Route path="/database/new"><NewDatabase /></Route>
@@ -45,7 +45,9 @@
 				</Route>
 			{/if}
 		</main>
-		<footer class="flex w-[100vw] p-2.5 mt-6 bg-gray-100 dark:bg-gray-950 justify-between gap-6">
+		<footer
+			class="mt-6 flex w-[100vw] justify-between gap-6 bg-gray-100 p-2.5 dark:bg-gray-950"
+		>
 			<div>
 				Powered by <a href="https://github.com/marcua/ayb">ayb</a> and
 				<a href="https://github.com/sofiaritz/aybWeb">aybWeb</a>
