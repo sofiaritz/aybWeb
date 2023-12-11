@@ -1,5 +1,6 @@
 <script lang="ts">
 	import DatabasePagesHeader from "../lib/components/database/DatabasePagesHeader.svelte"
+	import { Link } from "svelte-routing"
 
 	export let entity: string
 	export let slug: string
@@ -22,8 +23,7 @@
 				<span class="mt-1 block text-gray-500 dark:text-gray-400"
 					>Contact the instance owner for support</span
 				>
-				<a class="mt-1 block" href="https://git.sofiaritz.com/sofia/wip">ayb.host/support</a
-				>
+				<Link class="mt-1 block" to="/docs/support">aybWeb/support</Link>
 			</div>
 		</div>
 		<div class="flex gap-6">
