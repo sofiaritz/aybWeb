@@ -50,7 +50,7 @@
 				<Link
 					to="/database/new"
 					role="button"
-					class="flex h-60 w-full flex-col items-center justify-center gap-3 rounded border border-gray-300 dark:border-gray-800 p-2 text-black no-underline hover:text-black"
+					class="flex h-60 w-full flex-col items-center justify-center gap-3 rounded border border-gray-300 p-2 text-black no-underline hover:text-black dark:border-gray-800"
 				>
 					<span class="text-4xl dark:text-white">+</span>
 					<h2 class="text-xl font-bold dark:text-white">Create a new database</h2>

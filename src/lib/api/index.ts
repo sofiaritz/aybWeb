@@ -78,7 +78,7 @@ export async function register(username: string, email: string, auth: UserInstan
 	await request("/v1/register", auth, {
 		headers: {
 			"entity-type": "user",
-			"entity": username,
+			entity: username,
 			"email-address": email,
 		},
 		method: "POST",

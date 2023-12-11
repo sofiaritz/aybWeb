@@ -12,7 +12,7 @@
 	import NewDatabase from "./routes/NewDatabase.svelte"
 	import { AYB_WEB_VERSION } from "./lib/consts"
 	import Support from "./routes/docs/Support.svelte"
-	import Signup from "./routes/Signup.svelte";
+	import Signup from "./routes/Signup.svelte"
 </script>
 
 <Router>
