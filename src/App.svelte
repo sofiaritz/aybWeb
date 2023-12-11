@@ -12,6 +12,7 @@
 	import NewDatabase from "./routes/NewDatabase.svelte"
 	import { AYB_WEB_VERSION } from "./lib/consts"
 	import Support from "./routes/docs/Support.svelte"
+	import Signup from "./routes/Signup.svelte";
 </script>
 
 <Router>
@@ -39,6 +40,7 @@
 			{:else}
 				<Route path="/"><Redirect to="/auth/login" /></Route>
 				<Route path="/auth/login"><Login /></Route>
+				<Route path="/auth/signup"><Signup /></Route>
 				<Route path="/auth/confirm"><Confirm token={undefined} /></Route>
 				<Route path="/auth/confirm/:token" let:params>
 					<Confirm token={params.token} />

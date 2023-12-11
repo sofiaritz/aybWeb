@@ -50,11 +50,11 @@
 				<Link
 					to="/database/new"
 					role="button"
-					class="flex h-60 w-full flex-col items-center justify-center gap-3 rounded border border-gray-300 p-2 text-black no-underline hover:text-black"
+					class="flex h-60 w-full flex-col items-center justify-center gap-3 rounded border border-gray-300 dark:border-gray-800 p-2 text-black no-underline hover:text-black"
 				>
-					<span class="text-4xl">+</span>
-					<h2 class="text-xl font-bold">Create a new database</h2>
-					<span class="block text-gray-500"
+					<span class="text-4xl dark:text-white">+</span>
+					<h2 class="text-xl font-bold dark:text-white">Create a new database</h2>
+					<span class="block text-gray-500 dark:text-gray-400"
 						>The instance owner hasn't set any limits for your account</span
 					>
 				</Link>

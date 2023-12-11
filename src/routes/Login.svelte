@@ -70,6 +70,7 @@
 				<Input name="username" id="username-input" placeholder="alice" />
 			</label>
 			<Button type="submit">Send login link</Button>
+			<Link to="/auth/signup">Signup instead?</Link>
 		</form>
 	{/if}
 </div>

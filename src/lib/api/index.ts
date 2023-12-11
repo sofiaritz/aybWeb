@@ -74,6 +74,17 @@ export async function login(entity: string, auth: UserInstanceData) {
 	})
 }
 
+export async function register(username: string, email: string, auth: UserInstanceData) {
+	await request("/v1/register", auth, {
+		headers: {
+			"entity-type": "user",
+			"entity": username,
+			"email-address": email,
+		},
+		method: "POST",
+	})
+}
+
 export async function confirm(token: string, auth: UserInstanceData) {
 	return request<UserToken>("/v1/confirm", auth, {
 		headers: {
@@ -83,7 +94,6 @@ export async function confirm(token: string, auth: UserInstanceData) {
 	})
 }
 
-// TODO(sofiaritz): Check method
 export async function createDatabase(
 	entity: string,
 	slug: string,
