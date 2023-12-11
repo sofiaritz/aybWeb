@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Header from "./lib/components/Header.svelte"
-	import { Router, Route } from "svelte-routing"
+	import { Router, Route, Link } from "svelte-routing"
 	import { loggedIn } from "./lib/auth/stores"
 	import Redirect from "./lib/components/Redirect.svelte"
 	import Login from "./routes/Login.svelte"
@@ -9,14 +9,19 @@
 	import DatabaseOverview from "./routes/DatabaseOverview.svelte"
 	import DatabaseQuery from "./routes/DatabaseQuery.svelte"
 	import UserPage from "./routes/UserPage.svelte"
+	import NewDatabase from "./routes/NewDatabase.svelte"
+	import { AYB_WEB_VERSION } from "./lib/consts"
+	import Support from "./routes/docs/Support.svelte";
 </script>
 
 <Router>
 	<Header />
-	<div class="mt-8 flex min-h-full flex-col items-center">
+	<div class="mt-8 flex min-h-[90vh] flex-col items-center justify-between">
 		<main class="flex w-[95vw] flex-col items-center md:w-[60vw]">
+			<Route path="/docs/support"><Support/></Route>
 			{#if $loggedIn}
 				<Route path="/"><Home /></Route>
+				<Route path="/database/new"><NewDatabase /></Route>
 				<Route path="/u/:entity/:slug/overview" let:params>
 					<DatabaseOverview entity={params.entity} slug={params.slug} />
 				</Route>
@@ -40,5 +45,16 @@
 				</Route>
 			{/if}
 		</main>
+		<footer class="flex w-[100vw] p-2.5 mt-6 bg-gray-100 dark:bg-gray-950 justify-between gap-6">
+			<div>
+				Powered by <a href="https://github.com/marcua/ayb">ayb</a> and
+				<a href="https://github.com/sofiaritz/aybWeb">aybWeb</a>
+				· aybWeb {AYB_WEB_VERSION}
+			</div>
+			<div>
+				<Link to="/docs/support">Support</Link> ·
+				<a href="/assets/vendor.LICENSE.txt">Licenses</a>
+			</div>
+		</footer>
 	</div>
 </Router>
