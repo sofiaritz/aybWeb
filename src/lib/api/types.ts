@@ -20,8 +20,25 @@ export type DatabaseInfo = {
 	database_type: string
 }
 
+export type EntityProfile = {
+	display_name?: string
+	description?: string
+	organization?: string
+	location?: string
+	links: { url: string; verified: boolean }[]
+}
+
+export type EntityProfileUpdate = {
+	display_name?: string
+	description?: string
+	organization?: string
+	location?: string
+	links?: { url: string }[]
+}
+
 export type EntityInfo = {
 	slug: string
+	profile?: EntityProfile
 	databases: DatabaseInfo[]
 }
 

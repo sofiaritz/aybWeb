@@ -5,6 +5,7 @@
 	import { confirm, entityInfo, isError, unwrapResponse } from "../lib/api"
 	import { credentials, loggedIn } from "../lib/auth/stores"
 	import { navigate } from "svelte-routing"
+	import { AYB_HOST } from "../lib/consts"
 
 	export let token: string | undefined
 
@@ -13,7 +14,7 @@
 		onSubmit: async (values) => {
 			let response = unwrapResponse(
 				await confirm(values.token, {
-					endpoint: values["instance"],
+					endpoint: AYB_HOST ?? values["instance"],
 				}),
 			)
 
@@ -22,7 +23,7 @@
 		onSuccess: async (value: any) => {
 			let [values, data] = value
 			let response = await entityInfo(values["username"], {
-				endpoint: values["instance"],
+				endpoint: AYB_HOST ?? values["instance"],
 				entity: values["username"],
 				token: data["token"],
 			})
@@ -33,7 +34,7 @@
 				return
 			}
 
-			let url = new URL(values["instance"])
+			let url = new URL(AYB_HOST ?? values["instance"])
 			url.username = values["username"]
 			url.password = data["token"]
 
@@ -51,15 +52,17 @@
 	<h1 class="text-2xl">Confirmation</h1>
 	<p class="text-xl text-gray-900">We are almost there...</p>
 	<form class="mt-5 flex flex-col gap-3.5" use:form>
-		<label class="block" for="instance-input">
-			Instance
-			<Input
-				type="url"
-				name="instance"
-				id="instance-input"
-				placeholder="https://ayb.sofiaritz.com"
-			/>
-		</label>
+		{#if AYB_HOST == null}
+			<label class="block" for="instance-input">
+				Instance
+				<Input
+					type="url"
+					name="instance"
+					id="instance-input"
+					placeholder="https://aybServer.sofiaritz.com"
+				/>
+			</label>
+		{/if}
 		<label class="block" for="username-input">
 			Username
 			<Input name="username" id="username-input" placeholder="alice" />
