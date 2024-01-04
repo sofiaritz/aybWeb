@@ -25,3 +25,6 @@ dist-ssr
 
 # Environment variables
 .env
+
+# webInfo
+public/.well-known/ayb/webInfo.json

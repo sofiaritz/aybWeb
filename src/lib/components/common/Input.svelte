@@ -8,7 +8,7 @@
 </script>
 
 <input
-	class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 disabled:bg-gray-100 disabled:font-mono"
+	class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 disabled:bg-gray-100 disabled:font-mono dark:border-gray-700 dark:bg-gray-900 dark:text-white disabled:dark:bg-gray-900"
 	{type}
 	{name}
 	{id}

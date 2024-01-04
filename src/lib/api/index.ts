@@ -2,6 +2,7 @@ import type {
 	DatabaseCreation,
 	DatabaseQuery,
 	EntityInfo,
+	EntityProfileUpdate,
 	Response,
 	UserInstanceData,
 	UserToken,
@@ -33,6 +34,8 @@ async function request<T>(
 		headers["Authorization"] = `Bearer ${auth.token}`
 	}
 
+	headers["Accept"] = "application/json"
+
 	let body
 	if (text != null && json != null) {
 		console.error(
@@ -42,6 +45,7 @@ async function request<T>(
 	} else if (text != null) {
 		body = text
 	} else if (json != null) {
+		headers["Content-Type"] = "application/json"
 		body = JSON.stringify(json)
 	}
 
@@ -51,7 +55,10 @@ async function request<T>(
 		method,
 	})
 
-	return res.json()
+	let textRes = await res.text()
+	try {
+		return JSON.parse(textRes)
+	} catch (e) {}
 }
 
 export function unwrapResponse<T>(response: Response<T>): T {
@@ -110,6 +117,17 @@ export async function createDatabase(
 
 export async function entityInfo(entity: string, auth: UserInstanceData) {
 	return request<EntityInfo>(`/v1/entity/${entity}`, auth)
+}
+
+export async function updateProfile(
+	entity: string,
+	profile: EntityProfileUpdate,
+	auth: UserInstanceData,
+) {
+	return request<any>(`/v1/entity/${entity}`, auth, {
+		json: profile,
+		method: "PATCH",
+	})
 }
 
 export async function queryDatabase(slug: string, query: string, auth: UserInstanceData) {

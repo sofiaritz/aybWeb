@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { createForm } from "felte"
 	import { Button, Input } from "../lib/components/common"
-	import { login, register } from "../lib/api"
+	import { register } from "../lib/api"
 	import { unwrapResponse } from "../lib/api"
 	import { Link } from "svelte-routing"
+	import { AYB_HOST } from "../lib/consts"
 
 	enum State {
 		Waiting,
@@ -18,7 +19,7 @@
 		onSubmit: async (values) => {
 			return unwrapResponse(
 				await register(values.username, values.email, {
-					endpoint: values["instance"],
+					endpoint: AYB_HOST ?? values["instance"],
 					entity: values["username"],
 				}),
 			)
@@ -51,20 +52,22 @@
 	{:else if state === State.Waiting}
 		<h1 class="mb-6 text-2xl font-bold text-gray-900 dark:text-white">Signup</h1>
 		<form class="flex flex-col gap-3.5" use:form>
-			<label class="block" for="instance-input">
-				Instance
-				<Input
-					type="url"
-					name="instance"
-					id="instance-input"
-					placeholder="https://ayb.sofiaritz.com"
-				/>
-				<span class="text-sm text-gray-700 dark:text-gray-400"
-					>You can find an updated instance list at <a
-						href="https://git.sofiaritz.com/sofia/wip">ayb.host/instances</a
-					></span
-				>
-			</label>
+			{#if AYB_HOST == null}
+				<label class="block" for="instance-input">
+					Instance
+					<Input
+						type="url"
+						name="instance"
+						id="instance-input"
+						placeholder="https://aybServer.sofiaritz.com"
+					/>
+					<span class="text-sm text-gray-700 dark:text-gray-400"
+						>You can find an updated instance list at <a
+							href="https://git.sofiaritz.com/sofia/wip">ayb.host/instances</a
+						></span
+					>
+				</label>
+			{/if}
 			<label class="block" for="username-input">
 				Username
 				<Input name="username" id="username-input" placeholder="alice" />
