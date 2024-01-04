@@ -49,8 +49,8 @@
 				</Route>
 			{/if}
 			<Route>
-				<h1 class="text-5xl mb-3">Page not found</h1>
-				<span class=text-xl>Go back to <Link to="/">home</Link></span>
+				<h1 class="mb-3 text-5xl">Page not found</h1>
+				<span class="text-xl">Go back to <Link to="/">home</Link></span>
 			</Route>
 		</main>
 		<footer
@@ -60,9 +60,9 @@
 				Powered by <a href="https://github.com/marcua/ayb">ayb</a> and
 				<a href="https://github.com/sofiaritz/aybWeb">aybWeb</a>
 				{#if AYB_HOST != null}
-				· Connected to
+					· Connected to
 					{#if AYB_HOST_DOCS != null}
-						<a href="{AYB_HOST_DOCS}">{new URL(AYB_HOST).hostname}</a>
+						<a href={AYB_HOST_DOCS}>{new URL(AYB_HOST).hostname}</a>
 					{:else}
 						{new URL(AYB_HOST).hostname}
 					{/if}
