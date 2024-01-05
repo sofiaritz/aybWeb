@@ -4,7 +4,7 @@
 	import { register } from "../lib/api"
 	import { unwrapResponse } from "../lib/api"
 	import { Link } from "svelte-routing"
-	import { AYB_HOST } from "../lib/consts"
+	import { AYB_HOST, AYB_HOST_TOS } from "../lib/consts"
 
 	enum State {
 		Waiting,
@@ -76,6 +76,13 @@
 				E-mail
 				<Input name="email" id="email-input" placeholder="alice@mail.host" />
 			</label>
+			{#if AYB_HOST_TOS != null}
+				<p>
+					By signing up you accept the Terms of Service available at: <a
+						href={AYB_HOST_TOS}>{AYB_HOST_TOS}</a
+					>
+				</p>
+			{/if}
 			<Button type="submit">Send login link</Button>
 			<Link to="/auth/login">Login instead?</Link>
 		</form>
