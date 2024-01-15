@@ -6,7 +6,7 @@
 	import Button from "../lib/components/common/Button.svelte"
 </script>
 
-<div class="flex flex-col gap-6 md:w-8/12">
+<div class="flex w-full flex-col gap-6 lg:w-8/12">
 	<div class="flex flex-col gap-3">
 		<h1 class="text-2xl">Organizations</h1>
 		<div class="flex gap-6">
@@ -36,7 +36,7 @@
 			{/if}
 		</div>
 		{#if $userInfo.databases.length > 0}
-			<div class="grid grid-cols-2 gap-6">
+			<div class="grid gap-6 md:grid-cols-2">
 				{#each $userInfo.databases as database (database.slug)}
 					<DatabaseCard
 						entity={$userInfo.slug}
