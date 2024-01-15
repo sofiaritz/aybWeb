@@ -6,8 +6,9 @@ import type {
 	Response,
 	UserInstanceData,
 	UserToken,
+	Notices,
+	DBType,
 } from "./types"
-import { DBType } from "./types"
 
 async function request<T>(
 	endpoint: string,
@@ -24,8 +25,13 @@ async function request<T>(
 		method?: string
 	} = {},
 ): Promise<Response<T>> {
-	let url = new URL(auth.endpoint)
-	url.pathname = endpoint
+	let url
+	if (endpoint.startsWith("/")) {
+		url = new URL(auth.endpoint)
+		url.pathname = endpoint
+	} else {
+		url = new URL(endpoint)
+	}
 
 	let headers: any = {
 		...desiredHeaders,
@@ -135,4 +141,9 @@ export async function queryDatabase(slug: string, query: string, auth: UserInsta
 		text: query,
 		method: "POST",
 	})
+}
+
+export async function retrieveNotices(endpoint: string) {
+	let res = await fetch(endpoint)
+	return res.json()
 }

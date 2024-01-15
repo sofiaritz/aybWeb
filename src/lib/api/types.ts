@@ -56,3 +56,7 @@ export type DatabaseQuery = {
 	fields: string[]
 	rows: string[][]
 }
+
+export type Notices = {
+	content: string,
+}[]

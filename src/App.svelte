@@ -10,9 +10,21 @@
 	import DatabaseQuery from "./routes/DatabaseQuery.svelte"
 	import UserPage from "./routes/UserPage.svelte"
 	import NewDatabase from "./routes/NewDatabase.svelte"
-	import { AYB_HOST, AYB_HOST_DOCS, AYB_WEB_VERSION, AYB_DISABLE_SUPPORT } from "./lib/consts"
+	import {
+		AYB_HOST,
+		AYB_HOST_DOCS,
+		AYB_WEB_VERSION,
+		AYB_DISABLE_SUPPORT,
+		AYB_WEB_NOTICES,
+	} from "./lib/consts"
 	import Support from "./routes/docs/Support.svelte"
 	import Signup from "./routes/Signup.svelte"
+	import { retrieveNotices } from "./lib/api"
+
+	let notices =
+		AYB_WEB_NOTICES == null
+			? new Promise((resolve) => resolve([]))
+			: retrieveNotices(AYB_WEB_NOTICES)
 </script>
 
 <Router>
@@ -23,7 +35,18 @@
 				<Route path="/docs/support"><Support /></Route>
 			{/if}
 			{#if $loggedIn}
-				<Route path="/"><Home /></Route>
+				<Route path="/">
+					<div class="w-full pb-2">
+						{#await notices then notices}
+							{#each notices as notice}
+								<div class="aybWeb_notices w-full bg-yellow-500 p-2 text-black">
+									{@html notice.content}
+								</div>
+							{/each}
+						{/await}
+					</div>
+					<Home />
+				</Route>
 				<Route path="/database/new"><NewDatabase /></Route>
 				<Route path="/u/:entity/:slug/overview" let:params>
 					<DatabaseOverview entity={params.entity} slug={params.slug} />
@@ -78,3 +101,9 @@
 		</footer>
 	</div>
 </Router>
+
+<style>
+	.aybWeb_notices :global(a) {
+		@apply text-blue-800;
+	}
+</style>
