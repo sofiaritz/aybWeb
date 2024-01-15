@@ -58,5 +58,5 @@ export type DatabaseQuery = {
 }
 
 export type Notices = {
-	content: string,
+	content: string
 }[]
