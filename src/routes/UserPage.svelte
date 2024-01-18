@@ -40,7 +40,7 @@
 						organization:
 							values["organization"].length > 0 ? values["organization"] : null,
 						location: values["location"].length > 0 ? values["location"] : null,
-						links,
+						links: JSON.stringify(links),
 					},
 					$userInstanceData,
 				),

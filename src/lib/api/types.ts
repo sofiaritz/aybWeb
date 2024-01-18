@@ -33,7 +33,8 @@ export type EntityProfileUpdate = {
 	description?: string
 	organization?: string
 	location?: string
-	links?: { url: string }[]
+	/// JSON.stringify { url: string }[]
+	links?: string
 }
 
 export type EntityInfo = {
